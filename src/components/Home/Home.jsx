@@ -1,26 +1,25 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import SingleCard from "../SingleCard/SingleCard";
+import React, { useEffect, useState } from 'react';
+import SingleCard from '../SingleCard/SingleCard';
 
-const Home = ({ handleWatchTime }) => {
-  const [movies, setMovies] = useState([]);
+const Home = ({ handelWatchTime }) => {
+  const [movies, setMovies] = useState([])
+
 
   useEffect(() => {
-    fetch("data.json")
-      .then((res) => res.json())
-      .then((data) => setMovies(data));
-  }, []);
+    fetch('data.json')
+      .then(res => res.json())
+      .then(data => setMovies(data))
+  }, [])
+
 
   return (
     <div>
       <div className="movie-container row ">
-        {movies.map((movie) => (
-          <SingleCard
-            handleWatchTime={handleWatchTime}
-            movie={movie}
-          ></SingleCard>
-        ))}
+        {
+          movies.map(movie => (
+            <SingleCard handelWatchTime={handelWatchTime} movie={movie}></SingleCard>
+          ))}
+
       </div>
     </div>
   );
